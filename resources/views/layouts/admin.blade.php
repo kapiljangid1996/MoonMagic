@@ -151,11 +151,31 @@
     <script>
         $(document).ready(function(){
 
-            var activeurl = window.location;
+            var pathname = window.location.pathname.split( '/' );
 
-            $('a[href="'+activeurl+'"]').parent('li').addClass('active');
+            if ( pathname[3] ) {
 
-            $('a[href="'+activeurl+'"]').parent('li').parent('ul').addClass('show');
+                var url = location.protocol + '//' + location.hostname + '/' +pathname[1] + '/' + pathname[2] + '/' + pathname[3];
+
+            } else {
+
+                var url = location.protocol + '//' + location.hostname + '/' +pathname[1] + '/' + pathname[2];
+
+            }    
+
+            if( url ) { 
+
+                $('.main-menu').removeClass('active');
+
+                $('a[href="'+url+'"]').parent('li').addClass('active');
+
+                $('a[href="'+url+'"]').parent('li').parent('ul').addClass('show');
+
+            }   else {
+
+                $('.main-menu').addClass('active');
+
+            }        
 
         });
     </script>
