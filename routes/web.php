@@ -33,7 +33,7 @@ Route::group(['middleware' => ['auth', 'user', 'PreventBackHistory'], 'prefix' =
 //Admin User Routing
 Route::group(['middleware' => ['auth', 'admin', 'PreventBackHistory'], 'prefix' => 'admin'], function () {
 
-    //User Dashboard
+    //Admin Dashboard
     Route::get('/', [AdminController::class, 'index'])->name('admin.dashboard');
 
     //Admin Logout
