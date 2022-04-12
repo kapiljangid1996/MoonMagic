@@ -32,10 +32,10 @@
                     <table id="customer-info-detail-2" class="table style-2 table-bordered  table-hover">
                         <thead>
                             <tr>
-                                <th class="text-center"> Record Id </th>
-                                <th>Title</th>
+                                <th class="text-center">Record Id</th>
+                                <th class="text-center">Title</th>
                                 <th class="text-center">Image</th>
-                                <th>Sort Order</th>
+                                <th class="text-center">Sort Order</th>
                                 <th class="text-center">Status</th>
                                 <th class="text-center">Action</th>
                             </tr>
@@ -45,17 +45,17 @@
                                 <tr>
                                     <td class="text-center"><?php echo $index; ?></td> 
 
-                                    <td>{{ $slider->title }}</td>
+                                    <td class="text-center">{{ $slider->title }}</td>
 
                                     @if(!empty($slider->image))
                                         <td class="align-center">
                                             <span><img src="{{asset('Uploads/Slider/').'/'.$slider->image}}" class="img-thumbnail rounded-circle" alt="profile"></span>
                                         </td>
                                     @else
-                                        <td>No Image Found</td>
+                                        <td class="text-center">No Image Found</td>
                                     @endif
 
-                                    <td>{{ $slider->sort_order }}</td>
+                                    <td class="text-center">{{ $slider->sort_order }}</td>
 
                                     @if($slider->status == 1)
                                         <td class="align-center"><span class="shadow-none badge badge-success">Published</span></td>
@@ -66,7 +66,7 @@
                                     <td class="text-center">
                                         <a href="{{route('sliders.edit', $slider->id)}}" class="bs-tooltip" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"><i class="flaticon-edit-4 fs-20"></i></a>
 
-                                        <a href="{{url('/admin/sliders/delete/'.$slider->id)}}" class="bs-tooltip" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete" onclick="return confirm('Are you sure you want to delete')"><i class="flaticon-close-fill fs-20"></i></a>
+                                        <a href="{{url('/admin/sliders/delete/'.$slider->id)}}" class="bs-tooltip ml-3" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete" onclick="return confirm('Are you sure you want to delete')"><i class="flaticon-close-fill fs-20"></i></a>
                                     </td>
                                 </tr>
                             <?php } ?> 

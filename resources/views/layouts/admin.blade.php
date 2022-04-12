@@ -28,10 +28,29 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('backend/plugins/table/datatable/datatables.css') }}" />
 
     <link rel="stylesheet" type="text/css" href="{{ asset('backend/plugins/table/datatable/custom_dt_customer.css') }}" />
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('backend/plugins/file-upload/file-upload-with-preview.css') }}" />
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('backend/plugins/color_pickers/jquery_minicolors/jquery.minicolors.css') }}" />  
     <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->   
 
     <!-- Extra Css -->
         @yield('custom-css')
+
+        <style>
+            .form-control {
+                border: 1px solid #ccc;
+                color: #888ea8;
+                font-size: 15px;
+                border-radius: 2px;
+            }
+            .form-vertical .form-group .control-label { color: #3b3f5c; }
+            .form-control::-webkit-input-placeholder { color: #888ea8; font-size: 15px; }
+            .form-control::-ms-input-placeholder { color: #888ea8; font-size: 15px; }
+            .form-control::-moz-placeholder { color: #888ea8; font-size: 15px; }
+            .form-control:focus { border-color: #f1f3f1; border-left: solid 3px #3862f5; }
+            label { color: #3b3f5c; margin-bottom: 14px; }
+        </style>
     <!-- Extra Css End -->
 </head>
 
@@ -99,17 +118,18 @@
     <!-- <script src="{{ asset('backend/assets/js/default-dashboard/default-custom.js') }}"></script> -->
 
     <script src="{{ asset('backend/plugins/table/datatable/datatables.js') }}"></script>
+
     <script>
         c2 = $('#customer-info-detail-2').DataTable({
             "lengthMenu": [ 5, 10, 20, 50, 100 ],
-            headerCallback:function(e, a, t, n, s) {
+            /*headerCallback:function(e, a, t, n, s) {
                 e.getElementsByTagName("th")[0].innerHTML='<label class="new-control new-checkbox checkbox-outline-primary m-auto">\n<input type="checkbox" class="new-control-input chk-parent select-customers-info" id="customer-all-info">\n<span class="new-control-indicator"></span><span style="visibility:hidden">c</span>\n</label>'
             },
             columnDefs:[ {
                 targets:0, width:"30px", className:"", orderable:!1, render:function(e, a, t, n) {
                     return'<label class="new-control new-checkbox checkbox-outline-primary  m-auto">\n<input type="checkbox" class="new-control-input child-chk select-customers-info" id="customer-all-info">\n<span class="new-control-indicator"></span><span style="visibility:hidden">c</span>\n</label>'
                 }
-            }],
+            }],*/
             "language": {
                 "paginate": {
                   "previous": "<i class='flaticon-arrow-left-1'></i>",
@@ -120,7 +140,7 @@
         });
 
         multiCheck(c2);
-    </script>
+    </script>    
     <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
 
     <!-- Extra JS -->
@@ -139,6 +159,17 @@
 
         });
     </script>
+
+    <!-- Slugify Start -->
+        <script type="text/javascript">
+            $("#name").keyup(function(){
+                var Text = $(this).val();
+                Text = Text.toLowerCase();
+                Text = Text.replace(/[^a-zA-Z0-9]+/g,'-');
+                $("#slug").val(Text);
+            });
+        </script>
+    <!-- Slugify End -->
     <!-- Custom Js End -->
 </body>
 

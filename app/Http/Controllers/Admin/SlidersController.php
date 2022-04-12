@@ -27,7 +27,7 @@ class SlidersController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.slider-manager.add');
     }
 
     /**
@@ -38,7 +38,8 @@ class SlidersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $sliders = Slider::addSlide($request);
+        return redirect()->route('sliders.index')->with('success','Slide created successfully!');
     }
 
     /**
@@ -60,7 +61,8 @@ class SlidersController extends Controller
      */
     public function edit($id)
     {
-        //
+        $sliders = Slider::find($id);
+        return view('admin.slider-manager.edit')->with('sliders',$sliders);
     }
 
     /**
@@ -72,7 +74,8 @@ class SlidersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $sliders = Slider::editSlide($request,$id);
+        return redirect()->route('sliders.index')->with('success','Slide updated successfully!');
     }
 
     /**
@@ -83,6 +86,12 @@ class SlidersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $sliders = Slider::findOrFail($id);
+        if(!empty($sliders) && !empty($sliders['image'])){
+            $files = array("public/Uploads/Slider/".$sliders['image']);
+            File::delete($files);
+        }
+        $sliders->delete();
+        return redirect()->route('sliders.index')->with('success','Slide deleted successfully!');
     }
 }
