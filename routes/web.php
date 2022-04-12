@@ -42,4 +42,8 @@ Route::group(['middleware' => ['auth', 'admin', 'PreventBackHistory'], 'prefix' 
     //Edit Profile
     Route::get('/profile-edit', [AdminController::class, 'profile'])->name('admin.profile');
     Route::post('/profile-edit', [AdminController::class, 'profileEdit'])->name('admin.edit.profile');
+
+    //Slider Manager
+    Route::resource('sliders', App\Http\Controllers\Admin\SlidersController::class); 
+    Route::get('/sliders/delete/{id}', [App\Http\Controllers\Admin\SlidersController::class, 'destroy']);
 });

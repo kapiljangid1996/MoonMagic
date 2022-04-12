@@ -23,13 +23,11 @@
     <!-- END GLOBAL MANDATORY STYLES -->
 
     <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM STYLES -->
-    <link href="{{ asset('backend/assets/css/support-chat.css') }}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('backend/assets/css/default-dashboard/style.css') }}" />    
 
-    <link href="{{ asset('backend/plugins/maps/vector/jvector/jquery-jvectormap-2.0.3.css') }}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('backend/plugins/table/datatable/datatables.css') }}" />
 
-    <link href="{{ asset('backend/plugins/charts/chartist/chartist.css') }}" rel="stylesheet" type="text/css">
-
-    <link href="{{ asset('backend/assets/css/default-dashboard/style.css') }}" rel="stylesheet" type="text/css" />    
+    <link rel="stylesheet" type="text/css" href="{{ asset('backend/plugins/table/datatable/custom_dt_customer.css') }}" />
     <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->   
 
     <!-- Extra Css -->
@@ -98,24 +96,50 @@
     <!-- END GLOBAL MANDATORY SCRIPTS -->
 
     <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
-    <!-- <script src="{{ asset('backend/plugins/charts/chartist/chartist.js') }}"></script> -->
-
-    <!-- <script src="{{ asset('backend/plugins/maps/vector/jvector/jquery-jvectormap-2.0.3.min.js') }}"></script> -->
-
-    <!-- <script src="{{ asset('backend/plugins/maps/vector/jvector/worldmap_script/jquery-jvectormap-world-mill-en.js') }}"></script> -->
-
-    <!-- <script src="{{ asset('backend/plugins/calendar/pignose/moment.latest.min.js') }}"></script> -->
-
-    <!-- <script src="{{ asset('backend/plugins/calendar/pignose/pignose.calendar.js') }}"></script> -->
-
-    <!-- <script src="{{ asset('backend/plugins/progressbar/progressbar.min.js') }}"></script> -->
-
     <!-- <script src="{{ asset('backend/assets/js/default-dashboard/default-custom.js') }}"></script> -->
+
+    <script src="{{ asset('backend/plugins/table/datatable/datatables.js') }}"></script>
+    <script>
+        c2 = $('#customer-info-detail-2').DataTable({
+            "lengthMenu": [ 5, 10, 20, 50, 100 ],
+            headerCallback:function(e, a, t, n, s) {
+                e.getElementsByTagName("th")[0].innerHTML='<label class="new-control new-checkbox checkbox-outline-primary m-auto">\n<input type="checkbox" class="new-control-input chk-parent select-customers-info" id="customer-all-info">\n<span class="new-control-indicator"></span><span style="visibility:hidden">c</span>\n</label>'
+            },
+            columnDefs:[ {
+                targets:0, width:"30px", className:"", orderable:!1, render:function(e, a, t, n) {
+                    return'<label class="new-control new-checkbox checkbox-outline-primary  m-auto">\n<input type="checkbox" class="new-control-input child-chk select-customers-info" id="customer-all-info">\n<span class="new-control-indicator"></span><span style="visibility:hidden">c</span>\n</label>'
+                }
+            }],
+            "language": {
+                "paginate": {
+                  "previous": "<i class='flaticon-arrow-left-1'></i>",
+                  "next": "<i class='flaticon-arrow-right'></i>"
+                },
+                "info": "Showing page _PAGE_ of _PAGES_"
+            }
+        });
+
+        multiCheck(c2);
+    </script>
     <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
 
     <!-- Extra JS -->
         @yield('custom-js')
     <!-- Extra JS End -->
+
+    <!-- Custom Js -->
+    <script>
+        $(document).ready(function(){
+
+            var activeurl = window.location;
+
+            $('a[href="'+activeurl+'"]').parent('li').addClass('active');
+
+            $('a[href="'+activeurl+'"]').parent('li').parent('ul').addClass('show');
+
+        });
+    </script>
+    <!-- Custom Js End -->
 </body>
 
 </html>

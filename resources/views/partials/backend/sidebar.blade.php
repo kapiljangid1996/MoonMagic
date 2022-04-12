@@ -10,10 +10,11 @@
                 </a>
             </li>
         </ul>
+
         <ul class="list-unstyled menu-categories" id="accordionExample">
             <li class="menu">
                 <ul class="collapse submenu list-unstyled show">
-                    <li class="active">
+                    <li class="">
                         <a href="{{ url('/admin') }}"> <i class="flaticon-computer-4"></i> Dashboard </a>
                     </li>
                 </ul>

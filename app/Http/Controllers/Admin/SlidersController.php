@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Slider;
 use Illuminate\Http\Request;
+use File;
 
 class SlidersController extends Controller
 {
@@ -14,7 +16,8 @@ class SlidersController extends Controller
      */
     public function index()
     {
-        //
+        $sliders = Slider::all();
+        return view('admin.slider-manager.index')->with('sliders', $sliders);
     }
 
     /**
