@@ -21,7 +21,7 @@
                         <a href="{{ url('/admin/sliders') }}"> <i class="flaticon-picture"></i> Slider Manager </a>
                     </li>   
                     <li>
-                        <a href="{{ url('/admin/menu-builder') }}"> <i class="flaticon-picture"></i> Menu Manager </a>
+                        <a href="{{ url('/admin/menu-builder') }}"> <i class="flaticon-circle-menu-dot"></i> Menu Manager </a>
                     </li>                    
                 </ul>
             </li>
