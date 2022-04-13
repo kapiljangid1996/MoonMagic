@@ -8,6 +8,8 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
 
+    <meta name="csrf-token" id="csrf-token" content="{{ csrf_token() }}" />
+
     <title> @yield('title') </title>
 
     <link rel="icon" type="image/x-icon" href="{{ asset('backend/assets/img/favicon.ico') }}"/>
@@ -90,6 +92,10 @@
         <!--  END CONTENT PART  -->
 
     </div>
+
+    <input type="hidden" id="base_url" name="base_url" value="{{ URL::to('/') }}">
+
+    <input type="hidden" id="baseUrl" name="base_url" value="{{ URL::to('/') }}">
     <!-- END MAIN CONTAINER -->
 
     <!-- BEGIN GLOBAL MANDATORY SCRIPTS -->

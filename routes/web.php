@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\MenusController;
 use App\Http\Controllers\User\UserController;
 
 /*
@@ -46,4 +47,17 @@ Route::group(['middleware' => ['auth', 'admin', 'PreventBackHistory'], 'prefix' 
     //Slider Manager
     Route::resource('sliders', App\Http\Controllers\Admin\SlidersController::class); 
     Route::get('/sliders/delete/{id}', [App\Http\Controllers\Admin\SlidersController::class, 'destroy']);
+
+    //Menu Manager
+    Route::get('/menu-builder', [MenusController::class, 'index'])->name('menu-builder.index');
+    Route::post('/menu-builder', [MenusController::class, 'store'])->name('menu-builder.store');
+    Route::post('/editMenuType', [MenusController::class, 'update'])->name('menu-builder.update');
+    Route::get('/menu-builder/delete/{id}', [MenusController::class, 'destroy'])->name('menu-builder.destroy');
+    Route::get('/menu-builder/manage-menu/{id}', [MenusController::class, 'show'])->name('menu-builder.show');
+    Route::post('/menu/ajaxGetMenuLinks', [MenusController::class, 'ajaxGetMenuLinks']);    
+    Route::post('/menu/save_menu_links', [MenusController::class, 'save_menu_links']);   
+    Route::post('/menu/ajaxSaveMenuStructure', [MenusController::class, 'ajaxSaveMenuStructure']);  
+    Route::post('/menu/ajaxDeleteMenuPage', [MenusController::class, 'ajaxDeleteMenuPage']);    
+    Route::post('/menu/ajaxMenuPageDetail', [MenusController::class, 'ajaxMenuPageDetail']);    
+    Route::post('/menu/ajaxEditMenuPage', [MenusController::class, 'ajaxEditMenuPage']);
 });
