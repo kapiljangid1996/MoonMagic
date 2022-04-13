@@ -97,7 +97,7 @@
                                     <div class="custom-file-container__image-preview"></div>
                                 </div>
                             </div>
-                            <input type="hidden" name="old_image" value="{{$sliders->image}}">
+                            <input type="hidden" name="old_image" value="{{ $sliders->image }}">
                             {!! $errors->first('image', '<small class="text-danger">:message</small>') !!}
                         </div>
                         <div class="form-group col-md-6 img-view mt-5 pt-5">
@@ -114,7 +114,6 @@
                                 <input type="checkbox" class="custom-control-input" id="sChkbox" name="status" value="1" @if(old('status', $sliders->status)) checked @endif>
                                 <label class="custom-control-label" for="sChkbox">Published</label>
                             </div>
-                            {!! $errors->first('captioncolor', '<small class="text-danger">:message</small>') !!}
                         </div>
                     </div>
 

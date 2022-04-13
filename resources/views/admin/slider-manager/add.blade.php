@@ -33,13 +33,13 @@
                     <div class="form-row mb-4">
                         <div class="form-group col-md-6">
                             <label for="inputEmail4">Title</label>
-                            <input type="text" class="form-control" id="name" name="title" placeholder="Title" value="{{old('title')}}">
+                            <input type="text" class="form-control" id="name" name="title" placeholder="Title" value="{{ old('title') }}">
                             <input type="hidden" class="form-control" id="slug" name="slug">
                             {!! $errors->first('title', '<small class="text-danger">:message</small>') !!}
                         </div>
                         <div class="form-group col-md-6">
                             <label for="inputEmail4">Caption</label>
-                            <input type="text" class="form-control" id="name" name="caption" placeholder="Caption" value="{{old('caption')}}">
+                            <input type="text" class="form-control" id="name" name="caption" placeholder="Caption" value="{{ old('caption') }}">
                             {!! $errors->first('caption', '<small class="text-danger">:message</small>') !!}
                         </div>
                         <div class="form-group col-md-6">
@@ -49,12 +49,12 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label for="inputEmail4">Button Text</label>
-                            <input type="text" class="form-control" id="name" name="button_text" placeholder="Button Text" value="{{old('button_text')}}">
+                            <input type="text" class="form-control" id="name" name="button_text" placeholder="Button Text" value="{{ old('button_text') }}">
                             {!! $errors->first('button_text', '<small class="text-danger">:message</small>') !!}
                         </div>
                         <div class="form-group col-md-6">
                             <label for="inputEmail4">Button URL</label>
-                            <input type="text" class="form-control" id="name" name="button_url" placeholder="Button URL" value="{{old('button_url')}}">
+                            <input type="text" class="form-control" id="name" name="button_url" placeholder="Button URL" value="{{ old('button_url') }}">
                             {!! $errors->first('button_url', '<small class="text-danger">:message</small>') !!}
                         </div>
                         <div class="form-group col-md-6">
@@ -64,7 +64,7 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label for="inputEmail4">Sort Order</label>
-                            <input type="number" class="form-control" id="name" pattern="[0-9]" min="0" name="sort_order" placeholder="Sort Order" value="{{old('sort_order')}}" oninput="validity.valid||(value='');">
+                            <input type="number" class="form-control" id="name" pattern="[0-9]" min="0" name="sort_order" placeholder="Sort Order" value="{{ old('sort_order') }}" oninput="validity.valid||(value='');">
                             {!! $errors->first('sort_order', '<small class="text-danger">:message</small>') !!}
                         </div>
                     </div>
@@ -90,7 +90,6 @@
                                 <input type="checkbox" class="custom-control-input" id="sChkbox" name="status" value="1">
                                 <label class="custom-control-label" for="sChkbox">Published</label>
                             </div>
-                            {!! $errors->first('captioncolor', '<small class="text-danger">:message</small>') !!}
                         </div>
                     </div>
 

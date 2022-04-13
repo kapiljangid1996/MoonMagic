@@ -60,4 +60,8 @@ Route::group(['middleware' => ['auth', 'admin', 'PreventBackHistory'], 'prefix' 
     Route::post('/menu/ajaxDeleteMenuPage', [MenusController::class, 'ajaxDeleteMenuPage']);    
     Route::post('/menu/ajaxMenuPageDetail', [MenusController::class, 'ajaxMenuPageDetail']);    
     Route::post('/menu/ajaxEditMenuPage', [MenusController::class, 'ajaxEditMenuPage']);
+
+    //Category Manager
+    Route::resource('category', App\Http\Controllers\Admin\CategoriesController::class); 
+    Route::get('/category/delete/{id}', [App\Http\Controllers\Admin\CategoriesController::class, 'destroy']);
 });
