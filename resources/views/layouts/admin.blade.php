@@ -213,7 +213,7 @@
 
         multiCheck(c2);
 
-        c3 = $('#customer-info-detail-2').DataTable({
+        c3 = $('#customer-info-detail-3').DataTable({
             "lengthMenu": [ 5, 10, 20, 50, 100 ],
             headerCallback:function(e, a, t, n, s) {
                 e.getElementsByTagName("th")[0].innerHTML='<label class="new-control new-checkbox checkbox-outline-primary m-auto">\n<input type="checkbox" class="new-control-input chk-parent select-customers-info" id="customer-all-info">\n<span class="new-control-indicator"></span><span style="visibility:hidden">c</span>\n</label>'
