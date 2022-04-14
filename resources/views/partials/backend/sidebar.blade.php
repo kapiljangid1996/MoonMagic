@@ -24,6 +24,9 @@
                         <a href="{{ url('/admin/menu-builder') }}"> <i class="flaticon-circle-menu-dot"></i> Menu Manager </a>
                     </li>  
                     <li>
+                        <a href="{{ url('/admin/page-manager') }}"> <i class="flaticon-simple-screen-line"></i> Page Manager </a>
+                    </li> 
+                    <li>
                         <a href="{{ url('/admin/category') }}"> <i class="flaticon-left-dot-menu"></i> Category Manager </a>
                     </li>                    
                 </ul>

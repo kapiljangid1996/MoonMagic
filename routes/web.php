@@ -64,4 +64,8 @@ Route::group(['middleware' => ['auth', 'admin', 'PreventBackHistory'], 'prefix' 
     //Category Manager
     Route::resource('category', App\Http\Controllers\Admin\CategoriesController::class); 
     Route::get('/category/delete/{id}', [App\Http\Controllers\Admin\CategoriesController::class, 'destroy']);
+
+    //Page Manager
+    Route::resource('page-manager', App\Http\Controllers\Admin\PagesController::class); 
+    Route::get('/page-manager/delete/{id}', [App\Http\Controllers\Admin\PagesController::class, 'destroy']);
 });

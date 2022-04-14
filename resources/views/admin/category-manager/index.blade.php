@@ -47,9 +47,9 @@
                                     <td class="text-center">{{ $category->title }}</td>
 
                                     @if($category->status == 1)
-                                        <td class="align-center"><span class="shadow-none badge badge-success">Published</span></td>
+                                        <td class="align-center"><span class="shadow-none badge badge-success">Acive</span></td>
                                     @else
-                                        <td class="align-center"><span class="shadow-none badge badge-danger">Not Published</span></td>
+                                        <td class="align-center"><span class="shadow-none badge badge-danger">Inacive</span></td>
                                     @endif
 
                                     <td class="text-center">{{ $category->created_at }}</td>
