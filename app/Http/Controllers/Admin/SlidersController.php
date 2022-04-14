@@ -87,8 +87,8 @@ class SlidersController extends Controller
     public function destroy($id)
     {
         $sliders = Slider::findOrFail($id);
-        if(!empty($sliders) && !empty($sliders['image'])){
-            $files = array("public/Uploads/Slider/".$sliders['image']);
+        if(!empty($sliders) && !empty($sliders['media'])){
+            $files = array("public/Uploads/Slider/Image/".$sliders['media'], "public/Uploads/Slider/Video/".$sliders['media']);
             File::delete($files);
         }
         $sliders->delete();

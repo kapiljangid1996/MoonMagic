@@ -78,34 +78,35 @@
                             <input type="text" id="saturation-demo" class="form-control demo" data-control="saturation" name="buttoncolor" value="{{ $sliders->buttoncolor }}">
                             {!! $errors->first('buttoncolor', '<small class="text-danger">:message</small>') !!}
                         </div>
+                    </div>
+                    <div class="form-group row mb-4">
+                        <div class="form-group col-md-6">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="customFile" name="media">
+                                <label class="custom-file-label" for="customFile">Choose file (Image or Video)</label>
+                                <input type="hidden" name="old_media" value="{{ $sliders->media }}">
+                            </div>
+                        </div> 
+                        <div class="form-group col-md-6">
+                            @if(!empty($sliders->media))
+                                @if ( pathinfo($sliders->media, PATHINFO_EXTENSION) == 'mp4' )
+                                    <video width="320" height="240" controls>
+                                        <source src="{{asset('Uploads/Slider/Video').'/'.$sliders->media}}" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                @else
+                                    <img src="{{asset('Uploads/Slider/Image').'/'.$sliders->media}}"  width="100px">
+                                @endif
+                            @else
+                                No Media Found.
+                            @endif
+                        </div>   
+                    </div> 
+                    <div class="form-row mb-4">
                         <div class="form-group col-md-6">
                             <label for="inputEmail4">Sort Order</label>
                             <input type="number" class="form-control" id="name" pattern="[0-9]" min="0" name="sort_order" placeholder="Sort Order" value="{{ $sliders->sort_order }}" oninput="validity.valid||(value='');">
                             {!! $errors->first('sort_order', '<small class="text-danger">:message</small>') !!}
-                        </div>
-                    </div>
-                    <div class="form-row mb-4">
-                        <div class="form-group col-md-6">
-                            <div class="widget-content widget-content-area">
-                                <div class="custom-file-container" data-upload-id="myFirstImage">
-                                    <label>Upload Image <a href="javascript:void(0)" class="custom-file-container__image-clear" title="Clear Image">x</a></label>
-                                    <label class="custom-file-container__custom-file" >
-                                        <input type="file" class="custom-file-container__custom-file__custom-file-input" accept="image/*" name="image">
-                                        <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
-                                        <span class="custom-file-container__custom-file__custom-file-control"></span>
-                                    </label>
-                                    <div class="custom-file-container__image-preview"></div>
-                                </div>
-                            </div>
-                            <input type="hidden" name="old_image" value="{{ $sliders->image }}">
-                            {!! $errors->first('image', '<small class="text-danger">:message</small>') !!}
-                        </div>
-                        <div class="form-group col-md-6 img-view mt-5 pt-5">
-                            @if(!empty($sliders->image))
-                                <img src="{{asset('Uploads/Slider').'/'.$sliders->image}}"  width="100px">
-                            @else
-                                No Image Found.
-                            @endif
                         </div>
                     </div>
                     <div class="form-row mb-4">
@@ -126,11 +127,12 @@
 @endsection
 
 @section('custom-js')
-    <script src="{{ asset('backend/plugins/file-upload/file-upload-with-preview.js') }}"></script>
-
     <script>
-        //First upload
-        var firstUpload = new FileUploadWithPreview('myFirstImage')
+        // Add the following code if you want the name of the file appear on select
+        $(".custom-file-input").on("change", function() {
+            var fileName = $(this).val().split("\\").pop();
+            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });
     </script>
 
 

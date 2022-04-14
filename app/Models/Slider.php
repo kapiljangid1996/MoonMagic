@@ -11,14 +11,14 @@ class Slider extends Model
 
     protected $table = 'sliders';
 
-    protected $fillable = ['title', 'slug', 'image', 'caption', 'captioncolor', 'button_text', 'buttoncolor', 'button_url', 'meta_name', 'meta_keyword', 'meta_description', 'sort_order', 'status'];
+    protected $fillable = ['title', 'slug', 'media', 'caption', 'captioncolor', 'button_text', 'buttoncolor', 'button_url', 'meta_name', 'meta_keyword', 'meta_description', 'sort_order', 'status'];
 
     public static function addSlide($request)
     {
         $request->validate([
             'title'             => 'required|min:2|max:255|string',
             'slug'              => 'required|min:2|unique:sliders,slug',
-            'image'             => 'required',
+            'media'             => 'required',
             'caption'           => 'sometimes|nullable|min:3',
             'button_text'       => 'sometimes|nullable|min:3',
             'button_url'        => 'sometimes|nullable|min:3',
@@ -41,10 +41,19 @@ class Slider extends Model
         $sliders -> sort_order       = request('sort_order');
         $sliders -> status           = (isset($request['status'])) ? 1 : 0;
 
-        if (request()->file('image')){
-            $imageName =$request->get('slug')."-".request()->image->getClientOriginalName();
-            request()->image->move(public_path('Uploads/Slider'), $imageName); 
-            $sliders->image = $imageName;
+        if (request()->file('media')){
+            $mime_type = $request->file('media')->getMimeType();
+
+            if ($mime_type == 'image/jpeg') {
+                $imageName =$request->get('slug')."-".request()->media->getClientOriginalName();
+                request()->media->move(public_path('Uploads/Slider/Image'), $imageName); 
+                $sliders->media = $imageName;
+            } 
+            elseif ($mime_type == 'video/mp4') {
+                $vidoeName =$request->get('slug')."-".request()->media->getClientOriginalName();
+                request()->media->move(public_path('Uploads/Slider/Video'), $vidoeName); 
+                $sliders->media = $vidoeName;
+            }                
         }
         $sliders->save();
     }
@@ -75,16 +84,33 @@ class Slider extends Model
         $sliders -> meta_description    =  $request->input('meta_description');
         $sliders -> sort_order          =  $request->input('sort_order');
         $sliders -> status              =  (isset($request['status'])) ? 1 : 0;
-        $old_image                      =  $request->input('old_image');
+        $old_media                      =  $request->input('old_media');
 
-        if ($request->file('image')){
-            if(!empty($old_image)){
-                unlink(public_path("Uploads/Slider/{$old_image}"));
+        if ($request->file('media')){
+
+            $mime_type_old = pathinfo($old_media, PATHINFO_EXTENSION);
+
+            if(!empty($old_media)){
+                if ($mime_type_old == 'mp4') {
+                    unlink(public_path("Uploads/Slider/Video/{$old_media}"));
+                }  
+                else {
+                    unlink(public_path("Uploads/Slider/Image/{$old_media}"));
+                }              
             }
-            $slug = $request->get('slug');
-            $imageName =$slug.'-'.request()->image->getClientOriginalName();
-            request()->image->move(public_path('Uploads/Slider'), $imageName); 
-            $sliders->image = $imageName;
+            
+            $mime_type = $request->file('media')->getMimeType();
+
+            if ($mime_type == 'image/jpeg') {
+                $imageName =$request->get('slug')."-".request()->media->getClientOriginalName();
+                request()->media->move(public_path('Uploads/Slider/Image'), $imageName); 
+                $sliders->media = $imageName;
+            } 
+            elseif ($mime_type == 'video/mp4') {
+                $vidoeName =$request->get('slug')."-".request()->media->getClientOriginalName();
+                request()->media->move(public_path('Uploads/Slider/Video'), $vidoeName); 
+                $sliders->media = $vidoeName;
+            } 
         }
 
         $sliders->save();

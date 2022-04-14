@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('slug');
-            $table->string('image')->nullable();
+            $table->string('media')->nullable();
             $table->longtext('caption')->nullable();
             $table->longtext('captioncolor')->nullable();
             $table->string('button_text')->nullable();

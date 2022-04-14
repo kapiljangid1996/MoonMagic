@@ -34,7 +34,6 @@
                             <tr>
                                 <th class="text-center">Record Id</th>
                                 <th class="text-center">Title</th>
-                                <th class="text-center">Image</th>
                                 <th class="text-center">Sort Order</th>
                                 <th class="text-center">Status</th>
                                 <th class="text-center">Action</th>
@@ -46,14 +45,6 @@
                                     <td class="text-center"><?php echo $index; ?></td> 
 
                                     <td class="text-center">{{ $slider->title }}</td>
-
-                                    @if(!empty($slider->image))
-                                        <td class="align-center">
-                                            <span><img src="{{asset('Uploads/Slider/').'/'.$slider->image}}" class="img-thumbnail rounded-circle" alt="profile"></span>
-                                        </td>
-                                    @else
-                                        <td class="text-center">No Image Found</td>
-                                    @endif
 
                                     <td class="text-center">{{ $slider->sort_order }}</td>
 
