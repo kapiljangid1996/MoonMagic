@@ -82,4 +82,8 @@ Route::group(['middleware' => ['auth', 'admin', 'PreventBackHistory'], 'prefix' 
     //Meaning
     Route::resource('meaning-manager', App\Http\Controllers\Admin\Product\MeaningsController::class); 
     Route::get('/meaning-manager/delete/{id}', [App\Http\Controllers\Admin\Product\MeaningsController::class, 'destroy']);
+
+    //Gemstone
+    Route::resource('gemstone-manager', App\Http\Controllers\Admin\Product\GemstonesController::class); 
+    Route::get('/gemstone-manager/delete/{id}', [App\Http\Controllers\Admin\Product\GemstonesController::class, 'destroy']);
 });

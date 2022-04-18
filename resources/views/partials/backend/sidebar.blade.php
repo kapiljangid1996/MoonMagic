@@ -50,6 +50,9 @@
                             <li>
                                 <a href="{{ url('/admin/meaning-manager') }}"> <i class="flaticon-notes-4"></i> Meaning Manager </a>
                             </li>
+                            <li>
+                                <a href="{{ url('/admin/gemstone-manager') }}"> <i class="flaticon-elements"></i> Gemstone Manager </a>
+                            </li>
                         </ul>
                     </li>                   
                 </ul>

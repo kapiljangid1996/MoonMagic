@@ -41,6 +41,7 @@ return array(
     'App\\Models\\Menu' => $baseDir . '/app/Models/Menu.php',
     'App\\Models\\MenuPage' => $baseDir . '/app/Models/MenuPage.php',
     'App\\Models\\Page' => $baseDir . '/app/Models/Page.php',
+    'App\\Models\\Product\\Gemstone' => $baseDir . '/app/Models/Product/Gemstone.php',
     'App\\Models\\Product\\Material' => $baseDir . '/app/Models/Product/Material.php',
     'App\\Models\\Product\\Meaning' => $baseDir . '/app/Models/Product/Meaning.php',
     'App\\Models\\Product\\Shape' => $baseDir . '/app/Models/Product/Shape.php',

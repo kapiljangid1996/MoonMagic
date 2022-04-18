@@ -556,6 +556,7 @@ class ComposerStaticInitbf267296dd19be6b69adcaa91df437db
         'App\\Models\\Menu' => __DIR__ . '/../..' . '/app/Models/Menu.php',
         'App\\Models\\MenuPage' => __DIR__ . '/../..' . '/app/Models/MenuPage.php',
         'App\\Models\\Page' => __DIR__ . '/../..' . '/app/Models/Page.php',
+        'App\\Models\\Product\\Gemstone' => __DIR__ . '/../..' . '/app/Models/Product/Gemstone.php',
         'App\\Models\\Product\\Material' => __DIR__ . '/../..' . '/app/Models/Product/Material.php',
         'App\\Models\\Product\\Meaning' => __DIR__ . '/../..' . '/app/Models/Product/Meaning.php',
         'App\\Models\\Product\\Shape' => __DIR__ . '/../..' . '/app/Models/Product/Shape.php',
