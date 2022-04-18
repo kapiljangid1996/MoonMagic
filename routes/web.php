@@ -74,4 +74,8 @@ Route::group(['middleware' => ['auth', 'admin', 'PreventBackHistory'], 'prefix' 
     //Shape
     Route::resource('shape-manager', App\Http\Controllers\Admin\Product\ShapesController::class); 
     Route::get('/shape-manager/delete/{id}', [App\Http\Controllers\Admin\Product\ShapesController::class, 'destroy']);
+
+    //Material
+    Route::resource('material-manager', App\Http\Controllers\Admin\Product\MaterialsController::class); 
+    Route::get('/material-manager/delete/{id}', [App\Http\Controllers\Admin\Product\MaterialsController::class, 'destroy']);
 });

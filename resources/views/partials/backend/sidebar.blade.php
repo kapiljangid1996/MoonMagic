@@ -44,6 +44,9 @@
                             <li>
                                 <a href="{{ url('/admin/shape-manager') }}"> <i class="flaticon-3d-cube"></i> Shape Manager </a>
                             </li>
+                            <li>
+                                <a href="{{ url('/admin/material-manager') }}"> <i class="flaticon-tag"></i> Material Manager </a>
+                            </li>
                         </ul>
                     </li>                   
                 </ul>
