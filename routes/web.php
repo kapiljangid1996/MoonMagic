@@ -68,4 +68,10 @@ Route::group(['middleware' => ['auth', 'admin', 'PreventBackHistory'], 'prefix' 
     //Page Manager
     Route::resource('page-manager', App\Http\Controllers\Admin\PagesController::class); 
     Route::get('/page-manager/delete/{id}', [App\Http\Controllers\Admin\PagesController::class, 'destroy']);
+
+    //--------------------------------------Product Requirement---------------------------------------------
+
+    //Shape
+    Route::resource('shape-manager', App\Http\Controllers\Admin\Product\ShapesController::class); 
+    Route::get('/shape-manager/delete/{id}', [App\Http\Controllers\Admin\Product\ShapesController::class, 'destroy']);
 });

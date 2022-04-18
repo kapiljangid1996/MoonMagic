@@ -28,7 +28,24 @@
                     </li> 
                     <li>
                         <a href="{{ url('/admin/category') }}"> <i class="flaticon-left-dot-menu"></i> Category Manager </a>
-                    </li>                    
+                    </li> 
+                    <li>
+                        <a href="#product" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                            <div class="">
+                                <i class="flaticon-cart-bag-2"></i>
+                                <span>Product</span>
+                            </div>
+
+                            <div class="ml-3 mt-1">
+                                <small><i class="flaticon-right-arrow"></i></small>
+                            </div>
+                        </a>
+                        <ul class="collapse submenu list-unstyled" id="product" data-parent="#accordionExample">
+                            <li>
+                                <a href="{{ url('/admin/shape-manager') }}"> <i class="flaticon-3d-cube"></i> Shape Manager </a>
+                            </li>
+                        </ul>
+                    </li>                   
                 </ul>
             </li>
         </ul>
