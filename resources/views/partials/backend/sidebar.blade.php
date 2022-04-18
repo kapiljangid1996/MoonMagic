@@ -47,6 +47,9 @@
                             <li>
                                 <a href="{{ url('/admin/material-manager') }}"> <i class="flaticon-tag"></i> Material Manager </a>
                             </li>
+                            <li>
+                                <a href="{{ url('/admin/meaning-manager') }}"> <i class="flaticon-notes-4"></i> Meaning Manager </a>
+                            </li>
                         </ul>
                     </li>                   
                 </ul>

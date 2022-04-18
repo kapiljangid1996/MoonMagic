@@ -78,4 +78,8 @@ Route::group(['middleware' => ['auth', 'admin', 'PreventBackHistory'], 'prefix' 
     //Material
     Route::resource('material-manager', App\Http\Controllers\Admin\Product\MaterialsController::class); 
     Route::get('/material-manager/delete/{id}', [App\Http\Controllers\Admin\Product\MaterialsController::class, 'destroy']);
+
+    //Meaning
+    Route::resource('meaning-manager', App\Http\Controllers\Admin\Product\MeaningsController::class); 
+    Route::get('/meaning-manager/delete/{id}', [App\Http\Controllers\Admin\Product\MeaningsController::class, 'destroy']);
 });
