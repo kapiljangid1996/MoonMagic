@@ -53,6 +53,9 @@
                             <li>
                                 <a href="{{ url('/admin/gemstone-manager') }}"> <i class="flaticon-elements"></i> Gemstone Manager </a>
                             </li>
+                            <li>
+                                <a href="{{ url('/admin/product') }}"> <i class="flaticon-business"></i> Products Manager </a>
+                            </li>
                         </ul>
                     </li>                   
                 </ul>
