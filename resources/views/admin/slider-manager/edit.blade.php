@@ -42,52 +42,67 @@
                 <form action="{{ route('sliders.update',$sliders->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
-                    <div class="form-row mb-4">
-                        <div class="form-group col-md-6">
-                            <label for="inputEmail4">Title</label>
+                    <div class="form-group row mb-4">
+                        <label for="hEmail" class="col-xl-2 col-sm-3 col-sm-2 col-form-label">Title</label>
+                        <div class="col-xl-10 col-lg-9 col-sm-10">
                             <input type="text" class="form-control" id="name" name="title" value="{{ $sliders->title }}">
                             {!! $errors->first('title', '<small class="text-danger">:message</small>') !!}
                         </div>
-                        <div class="form-group col-md-6">
-                            <label for="inputEmail4">Slug</label>                            
+                    </div>
+                    <div class="form-group row mb-4">
+                        <label for="hEmail" class="col-xl-2 col-sm-3 col-sm-2 col-form-label">Slug</label>
+                        <div class="col-xl-10 col-lg-9 col-sm-10">
                             <input type="text" class="form-control" id="slug" name="slug" value="{{ $sliders->slug }}">
                             {!! $errors->first('slug', '<small class="text-danger">:message</small>') !!}
                         </div>
-                        <div class="form-group col-md-6">
-                            <label for="inputEmail4">Caption</label>
-                            <input type="text" class="form-control" id="name" name="caption" value="{{ $sliders->caption }}">
+                    </div>
+                    <div class="form-group row mb-4">
+                        <label for="hEmail" class="col-xl-2 col-sm-3 col-sm-2 col-form-label">Caption</label>
+                        <div class="col-xl-10 col-lg-9 col-sm-10">
+                            <input type="text" class="form-control" name="caption" value="{{ $sliders->caption }}">
                             {!! $errors->first('caption', '<small class="text-danger">:message</small>') !!}
                         </div>
-                        <div class="form-group col-md-6">
-                            <label for="inputPassword4">Caption Color</label>
+                    </div>
+                    <div class="form-group row mb-4">
+                        <label for="hEmail" class="col-xl-2 col-sm-3 col-sm-2 col-form-label">Caption Color</label>
+                        <div class="col-xl-10 col-lg-9 col-sm-10">
                             <input type="text" id="hue-demo" class="form-control demo" data-control="hue" name="captioncolor" value="{{ $sliders->captioncolor }}">
                             {!! $errors->first('captioncolor', '<small class="text-danger">:message</small>') !!}
                         </div>
-                        <div class="form-group col-md-6">
-                            <label for="inputEmail4">Button Text</label>
-                            <input type="text" class="form-control" id="name" name="button_text" placeholder="Button Text" value="{{ $sliders->button_text }}">
+                    </div>
+                    <div class="form-group row mb-4">
+                        <label for="hEmail" class="col-xl-2 col-sm-3 col-sm-2 col-form-label">Button Text</label>
+                        <div class="col-xl-10 col-lg-9 col-sm-10">
+                            <input type="text" class="form-control" name="button_text" value="{{ $sliders->button_text }}">
                             {!! $errors->first('button_text', '<small class="text-danger">:message</small>') !!}
                         </div>
-                        <div class="form-group col-md-6">
-                            <label for="inputEmail4">Button URL</label>
-                            <input type="text" class="form-control" id="name" name="button_url" placeholder="Button URL" value="{{ $sliders->button_url }}">
+                    </div>
+                    <div class="form-group row mb-4">
+                        <label for="hEmail" class="col-xl-2 col-sm-3 col-sm-2 col-form-label">Button URL</label>
+                        <div class="col-xl-10 col-lg-9 col-sm-10">
+                            <input type="text" class="form-control" name="button_url" value="{{ $sliders->button_url }}">
                             {!! $errors->first('button_url', '<small class="text-danger">:message</small>') !!}
                         </div>
-                        <div class="form-group col-md-6">
-                            <label for="inputPassword4">Button Color</label>
+                    </div>
+                    <div class="form-group row mb-4">
+                        <label for="hEmail" class="col-xl-2 col-sm-3 col-sm-2 col-form-label">Button Color</label>
+                        <div class="col-xl-10 col-lg-9 col-sm-10">
                             <input type="text" id="saturation-demo" class="form-control demo" data-control="saturation" name="buttoncolor" value="{{ $sliders->buttoncolor }}">
                             {!! $errors->first('buttoncolor', '<small class="text-danger">:message</small>') !!}
                         </div>
                     </div>
                     <div class="form-group row mb-4">
-                        <div class="form-group col-md-6">
+                        <label for="hEmail" class="col-xl-2 col-sm-3 col-sm-2 col-form-label">Image/Video</label>
+                        <div class="col-xl-10 col-lg-9 col-sm-10">
                             <div class="custom-file">
                                 <input type="file" class="custom-file-input" id="customFile" name="media">
-                                <label class="custom-file-label" for="customFile">Choose file (Image or Video)</label>
                                 <input type="hidden" name="old_media" value="{{ $sliders->media }}">
+                                <label class="custom-file-label" for="customFile">Choose file (Image or Video)</label>
                             </div>
-                        </div> 
-                        <div class="form-group col-md-6">
+                        </div>
+                    </div><div class="form-group row mb-4">
+                        <label for="hEmail" class="col-xl-2 col-sm-3 col-sm-2 col-form-label">Image/Video Preview</label>
+                        <div class="col-xl-10 col-lg-9 col-sm-10">
                             @if(!empty($sliders->media))
                                 @if ( pathinfo($sliders->media, PATHINFO_EXTENSION) == 'mp4' )
                                     <video width="320" height="240" controls>
@@ -95,25 +110,28 @@
                                         Your browser does not support the video tag.
                                     </video>
                                 @else
-                                    <img src="{{asset('Uploads/Slider/Image').'/'.$sliders->media}}"  width="100px">
+                                    <img src="{{asset('Uploads/Slider/Image').'/'.$sliders->media}}"  width="300px">
                                 @endif
                             @else
                                 No Media Found.
                             @endif
-                        </div>   
-                    </div> 
-                    <div class="form-row mb-4">
-                        <div class="form-group col-md-6">
-                            <label for="inputEmail4">Sort Order</label>
-                            <input type="number" class="form-control" id="name" pattern="[0-9]" min="0" name="sort_order" placeholder="Sort Order" value="{{ $sliders->sort_order }}" oninput="validity.valid||(value='');">
+                        </div>
+                    </div>
+                    <div class="form-group row mb-4">
+                        <label for="hEmail" class="col-xl-2 col-sm-3 col-sm-2 col-form-label">Sort Order</label>
+                        <div class="col-xl-10 col-lg-9 col-sm-10">
+                            <input type="number" class="form-control" pattern="[0-9]" min="0" name="sort_order" placeholder="Sort Order" value="{{ $sliders->sort_order }}" oninput="validity.valid||(value='');">
                             {!! $errors->first('sort_order', '<small class="text-danger">:message</small>') !!}
                         </div>
                     </div>
-                    <div class="form-row mb-4">
-                        <div class="form-group col-md-6">
-                            <div class="custom-control custom-checkbox checkbox-info">
-                                <input type="checkbox" class="custom-control-input" id="sChkbox" name="status" value="1" @if(old('status', $sliders->status)) checked @endif>
-                                <label class="custom-control-label" for="sChkbox">Published</label>
+                    <div class="form-group row">
+                        <div class="col-sm-2"></div>
+                        <div class="col-sm-10">
+                            <div class="form-check pl-0">
+                                <div class="custom-control custom-checkbox checkbox-info">
+                                    <input type="checkbox" class="custom-control-input" id="hChkbox" name="status" value="1" @if(old('status', $sliders->status)) checked @endif>
+                                    <label class="custom-control-label" for="hChkbox">Published</label>
+                                </div>
                             </div>
                         </div>
                     </div>

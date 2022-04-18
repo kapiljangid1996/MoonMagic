@@ -34,6 +34,7 @@
                             <tr>
                                 <th class="text-center">Record Id</th>
                                 <th class="text-center">Title</th>
+                                <th class="text-center">Parent Category</th>
                                 <th class="text-center">Status</th>
                                 <th class="text-center">Date Created</th>
                                 <th class="text-center">Action</th>
@@ -45,6 +46,8 @@
                                     <td class="text-center"><?php echo $index; ?></td> 
 
                                     <td class="text-center">{{ $category->title }}</td>
+                                    
+                                    <td class="text-center">{{ $category->parent ? $category->parent->title : 'No Parent Category'}}</td>
 
                                     @if($category->status == 1)
                                         <td class="align-center"><span class="shadow-none badge badge-success">Acive</span></td>

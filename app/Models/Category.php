@@ -11,7 +11,7 @@ class Category extends Model
 
     protected $table = 'categories';
 
-    protected $fillable = ['title', 'slug', 'image', 'short_description', 'meta_name', 'meta_keyword', 'meta_description', 'status'];
+    protected $fillable = ['title', 'slug', 'image', 'short_description', 'meta_name', 'meta_keyword', 'meta_description', 'parent_id', 'status'];
 
     public static function addCategory($request)
     {
@@ -29,6 +29,7 @@ class Category extends Model
         $categories -> title               = request('title');
         $categories -> slug                = request('slug');
         $categories -> short_description   = request('short_description');
+        $categories -> parent_id           = request('parent_id');
         $categories -> meta_name           = (isset($request['meta_name'])) ? $request['meta_name'] : ' ';
         $categories -> meta_keyword        = (isset($request['meta_keyword'])) ? $request['meta_keyword'] : ' ';
         $categories -> meta_description    = (isset($request['meta_description'])) ? $request['meta_description'] : ' ';
@@ -57,11 +58,12 @@ class Category extends Model
         $categories -> title               =  $request->input('title');
         $categories -> slug                =  $request->input('slug');
         $categories -> short_description   =  $request->input('short_description');
+        $categories -> parent_id           = $request->input('parent_id');
         $categories -> meta_name           =  $request->input('meta_name');
         $categories -> meta_keyword        =  $request->input('meta_keyword');
         $categories -> meta_description    =  $request->input('meta_description');
         $categories -> status              =  (isset($request['status'])) ? 1 : 0;
-        $old_image                      =  $request->input('old_image');
+        $old_image                         =  $request->input('old_image');
 
         if ($request->file('image')){
             if(!empty($old_image)){
@@ -74,5 +76,15 @@ class Category extends Model
         }
 
         $categories->save();
+    }
+
+    public function parent()
+    {
+        return $this->belongsTo('App\Models\Category', 'parent_id');
+    }
+
+    public function children()
+    {
+        return $this->hasMany('App\Models\Category', 'parent_id')->with('children');
     }
 }

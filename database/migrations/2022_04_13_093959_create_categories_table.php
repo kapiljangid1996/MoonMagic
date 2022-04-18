@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('meta_name')->nullable();
             $table->longtext('meta_keyword')->nullable();
             $table->longtext('meta_description')->nullable();
+            $table->integer('parent_id')->unsigned()->nullable();
             $table->boolean('status')->default(0);
             $table->timestamps();
         });

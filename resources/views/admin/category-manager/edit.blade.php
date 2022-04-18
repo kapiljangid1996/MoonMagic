@@ -77,9 +77,25 @@
                         </div>
                     </div>
                     <div class="form-group row mb-4">
+                        <label for="hEmail" class="col-xl-2 col-sm-3 col-sm-2 col-form-label">Select Parent Category <small>( Leave Blank if Main Category )</small></label>
+                        <div class="col-xl-10 col-lg-9 col-sm-10">
+                            <select class="selectpicker form-control" name="parent_id">
+                                <option value="">Select Parent Category</option>
+                                @if( count($all_categories) > 0 )
+                                    @foreach ($all_categories as $category)
+                                        <option value="{{ $category->id }}" {{ $category->id === $categories->parent_id ? 'selected' : '' }}>{{ $category->title }}</option>
+                                    @endforeach
+                                @else
+                                    <option value="">No Record Found</option>
+                                @endif
+                            </select>
+                            {!! $errors->first('meta_name', '<small class="text-danger">:message</small>') !!}
+                        </div>
+                    </div>
+                    <div class="form-group row mb-4">
                         <label for="hEmail" class="col-xl-2 col-sm-3 col-sm-2 col-form-label">Meta Title</label>
                         <div class="col-xl-10 col-lg-9 col-sm-10">
-                            <input type="text" class="form-control" name="meta_name" placeholder="Meta Title" value="{{ $categories->meta_name }}">
+                            <input type="text" class="form-control" name="meta_name" value="{{ $categories->meta_name }}">
                             {!! $errors->first('meta_name', '<small class="text-danger">:message</small>') !!}
                         </div>
                     </div>

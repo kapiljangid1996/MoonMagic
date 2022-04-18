@@ -59,6 +59,22 @@
                         </div>
                     </div>
                     <div class="form-group row mb-4">
+                        <label for="hEmail" class="col-xl-2 col-sm-3 col-sm-2 col-form-label">Select Parent Category <small>( Leave Blank if Main Category )</small></label>
+                        <div class="col-xl-10 col-lg-9 col-sm-10">
+                            <select class="selectpicker form-control" name="parent_id">
+                                <option value="">Select Parent Category</option>
+                                @if( count($categories) > 0 )
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}">{{ $category->title }}</option>
+                                    @endforeach
+                                @else
+                                    <option value="">No Record Found</option>
+                                @endif
+                            </select>
+                            {!! $errors->first('meta_name', '<small class="text-danger">:message</small>') !!}
+                        </div>
+                    </div>
+                    <div class="form-group row mb-4">
                         <label for="hEmail" class="col-xl-2 col-sm-3 col-sm-2 col-form-label">Meta Title</label>
                         <div class="col-xl-10 col-lg-9 col-sm-10">
                             <input type="text" class="form-control" name="meta_name" placeholder="Meta Title" value="{{old('meta_name')}}">
@@ -68,14 +84,14 @@
                     <div class="form-group row mb-4">
                         <label for="hEmail" class="col-xl-2 col-sm-3 col-sm-2 col-form-label">Meta Keyword</label>
                         <div class="col-xl-10 col-lg-9 col-sm-10">
-                            <textarea class="form-control" name="meta_keyword">{{old('meta_keyword')}}</textarea>
+                            <textarea class="form-control" name="meta_keyword" placeholder="Meta Keyword">{{old('meta_keyword')}}</textarea>
                             {!! $errors->first('meta_keyword', '<small class="text-danger">:message</small>') !!}
                         </div>
                     </div>
                     <div class="form-group row mb-4">
                         <label for="hEmail" class="col-xl-2 col-sm-3 col-sm-2 col-form-label">Meta Description</label>
                         <div class="col-xl-10 col-lg-9 col-sm-10">
-                            <textarea class="form-control" name="meta_description">{{old('meta_description')}}</textarea>
+                            <textarea class="form-control" name="meta_description" placeholder="Meta Description">{{old('meta_description')}}</textarea>
                             {!! $errors->first('meta_description', '<small class="text-danger">:message</small>') !!}
                         </div>
                     </div>

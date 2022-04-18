@@ -27,7 +27,8 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        return view('admin.category-manager.add');
+        $categories = Category::whereNull('parent_id')->get();
+        return view('admin.category-manager.add')->with('categories',$categories);
     }
 
     /**
@@ -62,7 +63,8 @@ class CategoriesController extends Controller
     public function edit($id)
     {
         $categories = Category::find($id);
-        return view('admin.category-manager.edit')->with('categories',$categories);
+        $all_categories = Category::whereNull('parent_id')->get();
+        return view('admin.category-manager.edit')->with('categories',$categories)->with('all_categories',$all_categories);
     }
 
     /**

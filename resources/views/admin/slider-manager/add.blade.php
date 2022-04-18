@@ -30,59 +30,73 @@
             <div class="widget-content widget-content-area">
                 <form action="{{ route('sliders.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <div class="form-row mb-4">
-                        <div class="form-group col-md-6">
-                            <label for="inputEmail4">Title</label>
+                    <div class="form-group row mb-4">
+                        <label for="hEmail" class="col-xl-2 col-sm-3 col-sm-2 col-form-label">Title</label>
+                        <div class="col-xl-10 col-lg-9 col-sm-10">
                             <input type="text" class="form-control" id="name" name="title" placeholder="Title" value="{{ old('title') }}">
                             <input type="hidden" class="form-control" id="slug" name="slug">
                             {!! $errors->first('title', '<small class="text-danger">:message</small>') !!}
                         </div>
-                        <div class="form-group col-md-6">
-                            <label for="inputEmail4">Caption</label>
-                            <input type="text" class="form-control" id="name" name="caption" placeholder="Caption" value="{{ old('caption') }}">
+                    </div>
+                    <div class="form-group row mb-4">
+                        <label for="hEmail" class="col-xl-2 col-sm-3 col-sm-2 col-form-label">Caption</label>
+                        <div class="col-xl-10 col-lg-9 col-sm-10">
+                            <input type="text" class="form-control" name="caption" placeholder="Caption" value="{{ old('caption') }}">
                             {!! $errors->first('caption', '<small class="text-danger">:message</small>') !!}
                         </div>
-                        <div class="form-group col-md-6">
-                            <label for="inputPassword4">Caption Color</label>
+                    </div>
+                    <div class="form-group row mb-4">
+                        <label for="hEmail" class="col-xl-2 col-sm-3 col-sm-2 col-form-label">Caption Color</label>
+                        <div class="col-xl-10 col-lg-9 col-sm-10">
                             <input type="text" id="hue-demo" class="form-control demo" data-control="hue" name="captioncolor" value="#6156ce">
                             {!! $errors->first('captioncolor', '<small class="text-danger">:message</small>') !!}
                         </div>
-                        <div class="form-group col-md-6">
-                            <label for="inputEmail4">Button Text</label>
-                            <input type="text" class="form-control" id="name" name="button_text" placeholder="Button Text" value="{{ old('button_text') }}">
+                    </div>
+                    <div class="form-group row mb-4">
+                        <label for="hEmail" class="col-xl-2 col-sm-3 col-sm-2 col-form-label">Button Text</label>
+                        <div class="col-xl-10 col-lg-9 col-sm-10">
+                            <input type="text" class="form-control" name="button_text" placeholder="Button Text" value="{{ old('button_text') }}">
                             {!! $errors->first('button_text', '<small class="text-danger">:message</small>') !!}
                         </div>
-                        <div class="form-group col-md-6">
-                            <label for="inputEmail4">Button URL</label>
-                            <input type="text" class="form-control" id="name" name="button_url" placeholder="Button URL" value="{{ old('button_url') }}">
+                    </div>
+                    <div class="form-group row mb-4">
+                        <label for="hEmail" class="col-xl-2 col-sm-3 col-sm-2 col-form-label">Button URL</label>
+                        <div class="col-xl-10 col-lg-9 col-sm-10">
+                            <input type="text" class="form-control" name="button_url" placeholder="Button URL" value="{{ old('button_url') }}">
                             {!! $errors->first('button_url', '<small class="text-danger">:message</small>') !!}
                         </div>
-                        <div class="form-group col-md-6">
-                            <label for="inputPassword4">Button Color</label>
+                    </div>
+                    <div class="form-group row mb-4">
+                        <label for="hEmail" class="col-xl-2 col-sm-3 col-sm-2 col-form-label">Button Color</label>
+                        <div class="col-xl-10 col-lg-9 col-sm-10">
                             <input type="text" id="saturation-demo" class="form-control demo" data-control="saturation" name="buttoncolor" value="#07dabf">
                             {!! $errors->first('buttoncolor', '<small class="text-danger">:message</small>') !!}
                         </div>
                     </div>
                     <div class="form-group row mb-4">
-                        <div class="form-group col-md-6">
+                        <label for="hEmail" class="col-xl-2 col-sm-3 col-sm-2 col-form-label">Image/Video</label>
+                        <div class="col-xl-10 col-lg-9 col-sm-10">
                             <div class="custom-file">
                                 <input type="file" class="custom-file-input" id="customFile" name="media">
                                 <label class="custom-file-label" for="customFile">Choose file (Image or Video)</label>
                             </div>
-                        </div>   
-                    </div> 
+                        </div>
+                    </div>
                     <div class="form-group row mb-4">
-                        <div class="form-group col-md-6">
-                            <label for="inputEmail4">Sort Order</label>
-                            <input type="number" class="form-control" id="name" pattern="[0-9]" min="0" name="sort_order" placeholder="Sort Order" value="{{ old('sort_order') }}" oninput="validity.valid||(value='');">
+                        <label for="hEmail" class="col-xl-2 col-sm-3 col-sm-2 col-form-label">Sort Order</label>
+                        <div class="col-xl-10 col-lg-9 col-sm-10">
+                            <input type="number" class="form-control" pattern="[0-9]" min="0" name="sort_order" placeholder="Sort Order" value="{{ old('sort_order') }}" oninput="validity.valid||(value='');">
                             {!! $errors->first('sort_order', '<small class="text-danger">:message</small>') !!}
                         </div>
                     </div>
-                    <div class="form-row mb-4">
-                        <div class="form-group col-md-6">
-                            <div class="custom-control custom-checkbox checkbox-info">
-                                <input type="checkbox" class="custom-control-input" id="sChkbox" name="status" value="1">
-                                <label class="custom-control-label" for="sChkbox">Published</label>
+                    <div class="form-group row">
+                        <div class="col-sm-2"></div>
+                        <div class="col-sm-10">
+                            <div class="form-check pl-0">
+                                <div class="custom-control custom-checkbox checkbox-info">
+                                    <input type="checkbox" class="custom-control-input" id="hChkbox" name="status" value="1">
+                                    <label class="custom-control-label" for="hChkbox">Published</label>
+                                </div>
                             </div>
                         </div>
                     </div>

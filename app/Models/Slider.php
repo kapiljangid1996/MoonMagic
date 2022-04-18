@@ -17,7 +17,7 @@ class Slider extends Model
     {
         $request->validate([
             'title'             => 'required|min:2|max:255|string',
-            'slug'              => 'required|min:2|unique:sliders,slug',
+            'slug'              => 'sometimes|nullable|unique:sliders,slug',
             'media'             => 'required',
             'caption'           => 'sometimes|nullable|min:3',
             'button_text'       => 'sometimes|nullable|min:3',
