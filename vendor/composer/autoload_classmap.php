@@ -47,6 +47,8 @@ return array(
     'App\\Models\\Product\\Material' => $baseDir . '/app/Models/Product/Material.php',
     'App\\Models\\Product\\Meaning' => $baseDir . '/app/Models/Product/Meaning.php',
     'App\\Models\\Product\\Product' => $baseDir . '/app/Models/Product/Product.php',
+    'App\\Models\\Product\\ProductImage' => $baseDir . '/app/Models/Product/ProductImage.php',
+    'App\\Models\\Product\\ProductMedia' => $baseDir . '/app/Models/Product/ProductMedia.php',
     'App\\Models\\Product\\Shape' => $baseDir . '/app/Models/Product/Shape.php',
     'App\\Models\\Slider' => $baseDir . '/app/Models/Slider.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',

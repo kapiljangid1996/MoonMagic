@@ -136,8 +136,7 @@
 <script src="https://cdn.ckeditor.com/4.18.0/standard/ckeditor.js"></script>
 
 <script>
-    var pathname = window.location.pathname.split( '/' );
-    var url = location.protocol + '//' + location.hostname + '/' +pathname[1];
+    var url = {!! json_encode(url('/')) !!};
     CKEDITOR.replace( 'editor1', {
         filebrowserBrowseUrl: url + '/public/ckfinder/ckfinder.html',
         filebrowserUploadUrl: url + '/public/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files'

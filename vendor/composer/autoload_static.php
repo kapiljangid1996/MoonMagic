@@ -562,6 +562,8 @@ class ComposerStaticInitbf267296dd19be6b69adcaa91df437db
         'App\\Models\\Product\\Material' => __DIR__ . '/../..' . '/app/Models/Product/Material.php',
         'App\\Models\\Product\\Meaning' => __DIR__ . '/../..' . '/app/Models/Product/Meaning.php',
         'App\\Models\\Product\\Product' => __DIR__ . '/../..' . '/app/Models/Product/Product.php',
+        'App\\Models\\Product\\ProductImage' => __DIR__ . '/../..' . '/app/Models/Product/ProductImage.php',
+        'App\\Models\\Product\\ProductMedia' => __DIR__ . '/../..' . '/app/Models/Product/ProductMedia.php',
         'App\\Models\\Product\\Shape' => __DIR__ . '/../..' . '/app/Models/Product/Shape.php',
         'App\\Models\\Slider' => __DIR__ . '/../..' . '/app/Models/Slider.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',

@@ -87,7 +87,7 @@ Route::group(['middleware' => ['auth', 'admin', 'PreventBackHistory'], 'prefix' 
     Route::resource('gemstone-manager', App\Http\Controllers\Admin\Product\GemstonesController::class); 
     Route::get('/gemstone-manager/delete/{id}', [App\Http\Controllers\Admin\Product\GemstonesController::class, 'destroy']);
 
-    //Gemstone
+    //Product
     Route::resource('product', App\Http\Controllers\Admin\Product\ProductsController::class); 
     Route::get('/product/delete/{id}', [App\Http\Controllers\Admin\Product\ProductsController::class, 'destroy']);
 });
