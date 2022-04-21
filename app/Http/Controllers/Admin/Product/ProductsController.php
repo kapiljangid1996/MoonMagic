@@ -121,4 +121,16 @@ class ProductsController extends Controller
 
         return redirect()->route('product.index')->with('success','Product deleted successfully!');
     }
+
+    public function removeProductMedia($id)
+    {
+        $images = ProductMedia::findOrFail($id);
+        $products = Product::where('id', $images['product_id'])->get();
+        if ( !empty($images) ) {
+            $files = array("public/Uploads/Product/".$products[0]['slug']."/Image/".$images['media'], "public/Uploads/Product/".$products[0]['slug']."/Video/".$images['media']);
+            File::delete($files);
+        }       
+        $images->delete();
+        echo "Media Deleted Successfully";
+    }
 }

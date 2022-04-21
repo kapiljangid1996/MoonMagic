@@ -90,4 +90,5 @@ Route::group(['middleware' => ['auth', 'admin', 'PreventBackHistory'], 'prefix' 
     //Product
     Route::resource('product', App\Http\Controllers\Admin\Product\ProductsController::class); 
     Route::get('/product/delete/{id}', [App\Http\Controllers\Admin\Product\ProductsController::class, 'destroy']);
+    Route::post('/product-media/delete/{id}', [App\Http\Controllers\Admin\Product\ProductsController::class, 'removeProductMedia']);
 });

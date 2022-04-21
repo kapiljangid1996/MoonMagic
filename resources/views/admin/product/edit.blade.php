@@ -3,12 +3,13 @@
 @section('title', 'Edit Product')
 
 @section('custom-css')
-<style>
+<link rel="stylesheet" type="text/css" href="{{ asset('backend/assets/css/modules/modules-card.css') }}"> 
+<!-- <style>
 	.images-preview-div img {
 		padding: 10px;
 		max-width: 200px;
 	}
-</style>
+</style> -->
 @endsection
 
 @section('content')
@@ -191,22 +192,39 @@
                             </div>
                         </div>
                     	<div class="form-group col-md-12">
-                            <div class="images-preview-div">
-                            	@foreach( $products->productImages as $val )
-                            		@if(!empty($val))
-		                                @if ( pathinfo($val['media'], PATHINFO_EXTENSION) == 'mp4' )
-		                                    <video width="320" height="240" controls>
-		                                        <source src="{{ asset('Uploads/Product/'.$products->slug.'/Video').'/'.$val['media'] }}" type="video/mp4">
-		                                        Your browser does not support the video tag.
-		                                    </video>
-		                                @else
-		                                    <img src="{{ asset('Uploads/Product/'.$products->slug.'/Image').'/'.$val['media'] }}">
-		                                @endif
-		                            @else
-		                                No Media Found.
-		                            @endif
-		                            <input type="hidden" name="old_image[]" value="{{ $val['media'] }}">
-                            	@endforeach
+                            <div class="images-preview-div mt-3">
+                            	<div class="row">
+	                            	@foreach( $products->productImages as $val )
+	                            		@if(!empty($val))
+		                            		<div class="col-md-3 layout-spacing remove-{{ $val['id'] }}">
+		                            			<div class="widget-content-area p-0 card-widget-content h-100 br-4"> 
+		                            				<div id="user-profile-card-4" class="card br-4 h-100" style="">
+		                            					<div class="card-body p-0">
+		                            						<div class="text-right">
+						                                        <div class="dropdown  custom-dropdown">
+						                                            <a class="dropdown-toggle remove-product-media" href="Javascript:void(0)" role="button" id="dropdownMenuLink" data-id="{{ $val['id'] }}"> <i class="flaticon-circle-cross"></i> </a>
+						                                        </div>
+						                                    </div>
+						                                    <div class="usr-img-meta mx-auto text-center mb-5">	
+								                                @if ( pathinfo($val['media'], PATHINFO_EXTENSION) == 'mp4' )
+								                                    <video width="320" height="240" controls>
+								                                        <source src="{{ asset('Uploads/Product/'.$products->slug.'/Video').'/'.$val['media'] }}" type="video/mp4">
+								                                        Your browser does not support the video tag.
+								                                    </video>
+								                                @else
+								                                    <img src="{{ asset('Uploads/Product/'.$products->slug.'/Image').'/'.$val['media'] }}">
+								                                @endif
+				                        					</div>
+				                        				</div>
+				                        			</div>
+				                        		</div>
+				                        	</div>
+			                        	@else
+			                                No Media Found.
+			                            @endif
+			                            <input type="hidden" name="old_image[]" value="{{ $val['media'] }}">
+	                            	@endforeach
+                            	</div>
                             </div>
                         </div>
                     </div>
@@ -300,6 +318,24 @@ $(function() {
 	});
 	
 });
+</script>
+
+<script>
+    $(".remove-product-media").click(function(){
+        var id = $(this).data("id");
+        var token = $("meta[name='csrf-token']").attr("content");
+        if(confirm("Are you sure you want to remove this media?")) { 
+            $.ajax({
+                url: "{{ url('/') }}/admin/product-media/delete/"+id,
+                type: 'POST',
+                data: { "id": id, "_token": token, },
+                success: function(data) {
+                    alert('Media Removed Successfully!');
+                    $(".remove-"+ id).remove();
+                }
+            });
+        }
+    });
 </script>
 
 <!-- Input type Price -->
