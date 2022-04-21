@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Product;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product\Product;
+use App\Models\Product\ProductMedia;
 use App\Models\Product\Gemstone;
 use App\Models\Product\Material;
 use App\Models\Product\Meaning;
@@ -32,10 +33,10 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        $gemstones  = Gemstone::all();
-        $materials  = Material::all();
-        $meanings   = Meaning::all();
-        $shapes     = Shape::all();
+        $gemstones  = Gemstone::where('status', 1)->get();
+        $materials  = Material::where('status', 1)->get();
+        $meanings   = Meaning::where('status', 1)->get();
+        $shapes     = Shape::where('status', 1)->get();
         $categories = Category::with('children')->with('parent')->where('status', 1)->get();
         return view('admin.product.add')->with('gemstones', $gemstones)->with('materials', $materials)->with('meanings', $meanings)->with('shapes', $shapes)->with('categories', $categories);
     }
@@ -48,9 +49,8 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        echo "<pre>";
-        print_r($request->all());
-        die;
+        $products = Product::addProduct($request);
+        return redirect()->route('product.index')->with('success','Product created successfully!');
     }
 
     /**
@@ -72,7 +72,13 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $products   = Product::with('productImages')->find($id);
+        $gemstones  = Gemstone::where('status', 1)->get();
+        $materials  = Material::where('status', 1)->get();
+        $meanings   = Meaning::where('status', 1)->get();
+        $shapes     = Shape::where('status', 1)->get();
+        $categories = Category::with('children')->with('parent')->where('status', 1)->get();
+        return view('admin.product.edit')->with('products', $products)->with('gemstones', $gemstones)->with('materials', $materials)->with('meanings', $meanings)->with('shapes', $shapes)->with('categories', $categories);
     }
 
     /**
@@ -84,7 +90,8 @@ class ProductsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $products = Product::editProduct($request,$id);
+        return redirect()->route('product.index')->with('success','Product updated successfully!');
     }
 
     /**
@@ -95,6 +102,23 @@ class ProductsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $products = Product::findOrFail($id);
+
+        $productImages = ProductMedia::where('product_id', $id)->get();        
+
+        if ( !empty($productImages) ) {
+            foreach ($productImages as $key => $value) {
+                if ( !empty($value['media']) ) {
+                    $files = array("public/Uploads/Product/".$products['slug']."/Image/".$value['media'], "public/Uploads/Product/".$products['slug']."/Video/".$value['media']);
+                    File::delete($files);
+                }
+            }
+        }
+
+        $products->delete();
+
+        $productImages = ProductMedia::where('product_id', $id)->delete();
+
+        return redirect()->route('product.index')->with('success','Product deleted successfully!');
     }
 }
